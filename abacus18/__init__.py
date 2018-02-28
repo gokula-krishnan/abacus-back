@@ -16,6 +16,6 @@ def main(global_config, **settings):
     config.set_authorization_policy(ACLAuthorizationPolicy())
     
     config.include('.models')
-    config.include('.routes')
+    config.include('.routes.routes')
     config.scan()
     return config.make_wsgi_app()
