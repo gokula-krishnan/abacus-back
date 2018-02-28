@@ -9,7 +9,7 @@ class Constants:
             'prod' : ''
         }
         self.password = {
-            'test' : 'Santi_39',
+            'test' : '',
             'development' : 'kirana@123',
             'prod' : ''
         }
@@ -19,7 +19,7 @@ class Constants:
             'prod' : ''
             }
         self.database = {
-            'test' : 'test' ,
+            'test' : 'mute' ,
             'development' : 'test',
             'prod' : ''
             }
