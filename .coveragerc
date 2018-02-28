@@ -1,0 +1,3 @@
+[run]
+source = abacus18
+omit = abacus18/test*
