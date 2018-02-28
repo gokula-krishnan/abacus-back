@@ -9,7 +9,7 @@ class Constants:
             'prod' : ''
         }
         self.password = {
-            'test' : '',
+            'test' : 'Incog@123',
             'development' : 'kirana@123',
             'prod' : ''
         }
