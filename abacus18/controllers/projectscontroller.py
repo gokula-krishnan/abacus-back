@@ -4,7 +4,7 @@ import os
 import bcrypt
 from pyramid.response import Response, FileResponse
 from ..models import Session
-from ..models.projectmodel import Project,ProjectContributors
+from ..models.projectmodel import Project,ProjectContributors,ProjectTransforms
 from ..models.usermodel import user
 from ..models.candidatemodel import Candidate
 from ..models.companymodel import Company
@@ -62,5 +62,17 @@ def project_post(request):
             return Helper.construct_response(401, 'Unauthorized', '')
 
 
+    else:
+        return Helper.construct_response(401,'Unauthorized','')
+
+@view_config(route_name='projects.view', request_method="GET")
+def project_view(request):
+    session = Session()
+    projectTransforms = ProjectTransforms()
+    if request.authenticated_userid:
+        userid = request.jwt_claims['user_id']
+        result = session.query(Company).filter(Company.userid == userid).first().id
+        queryobj = session.query(Company,Project).join(Project,Project.company_id == Company.id).filter(Company.id == result)
+        return Helper.construct_response(200,"success",projectTransforms.project_list_of_company(queryobj))
     else:
         return Helper.construct_response(401,'Unauthorized','')
